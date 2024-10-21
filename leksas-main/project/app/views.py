@@ -73,10 +73,10 @@ class UpdateProfile(APIView):
         try:
             personal_info = Student.objects.get(user_id=user)
         except Student.DoesNotExist:
-            return JsonResponse({"message": "Profile not found."}, status=status.HTTP_404_NOT_FOUND)
+            return JsonResponse({"message": "Profile not found"}, status=status.HTTP_404_NOT_FOUND)
 
         
-        serializer = PostSerializer(personal_info, data=request.data, partial=True)  # partial=True allows partial updates
+        serializer = PostSerializer(personal_info, data=request.data, partial=True) 
         if serializer.is_valid():
             serializer.save()
             return JsonResponse(serializer.data, status=status.HTTP_200_OK)
