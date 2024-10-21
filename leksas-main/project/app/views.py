@@ -80,4 +80,4 @@ class UpdateProfile(APIView):
         if serializer.is_valid():
             serializer.save()
             return JsonResponse(serializer.data, status=status.HTTP_200_OK)
-        return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return JsonResponse({"Error":"the post does not exist"}, status=status.HTTP_400_BAD_REQUEST)
